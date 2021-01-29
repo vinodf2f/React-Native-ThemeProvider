@@ -1,21 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import React from "react";
+import { SafeAreaView, Platform } from "react-native";
+import { ContextProvider } from "./ThemeContext";
+import Child from "./components/Child";
+import { ThemedView } from "./components/Themed";
+import ThemeSwitcher from "./components/ThemeSwitcher";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ContextProvider>
+      <ThemedView style={{ flex: 1 }}>
+        <SafeAreaView />
+        <ThemeSwitcher />
+        <Child />
+      </ThemedView>
+    </ContextProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
